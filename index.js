@@ -5,10 +5,6 @@ import 'dotenv/config';
 const PORT = process.env.port || 3300;
 
 http.createServer((request, response) => {
-    console.log('------------------------------');
-    console.log('Server is available!');
-    console.log('------------------------------');
-
     let dataBuffer = [];
 
     request.on('data', chunk => {

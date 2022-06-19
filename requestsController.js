@@ -16,13 +16,13 @@ export const requestsController = async (request, response, payload) => {
             await postApiController(request, response, payload);
             break;
         case RequestMethods.get:
-            getApiController(request, response, payload);
+            await getApiController(request, response, payload);
             break;
         case RequestMethods.put:
-            putApiController(request, response, payload);
+            await putApiController(request, response, payload);
             break;
         case RequestMethods.delete:
-            deleteApiController(request, response, payload);
+            await deleteApiController(request, response, payload);
             break;
         default:
             break;

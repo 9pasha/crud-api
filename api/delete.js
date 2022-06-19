@@ -1,14 +1,19 @@
 import { deleteUserById } from "../domain/user.js";
 import { validate as uuidValidate } from "uuid";
 
-export const deleteApiController = (request, response, payload) => {
-    const userId = request.url.split('/')[3];
+export const deleteApiController = async (request, response, payload) => {
+    try {
+        const userId = request.url.split('/')[3];
 
-    deleteUser(request, response, userId);
+        deleteUser(request, response, userId);
+    } catch (error) {
+        response.writeHead(500, {"Content-Type": "text/plain"});
+        await response.write(`Something wrong... Can not delete user`);
+        response.end();
+    }
 };
 
 export const deleteUser = (request, response, userId) => {
-    console.log(userId)
     const isDeleted = deleteUserById(userId);
 
     if (!uuidValidate(userId)) {

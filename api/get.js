@@ -38,19 +38,29 @@ const createTestUsers = () => {
     createUser(user3);
 }
 
-export const getApiController = (request, response) => {
+export const getApiController = async (request, response) => {
     createTestUsers();
-
-    console.log(request.url)
 
     const isUrlMatchWithPath = request.url
         .match(`${ApiBaseNamePath}${ApiUserPath}`);
     const splitedUrl = request.url.split('/');
 
     if (isUrlMatchWithPath && splitedUrl.length === 3) {
-        getAllUsers(request, response);
+        try {
+            getAllUsers(request, response);
+        } catch (error) {
+            response.writeHead(500, {"Content-Type": "text/plain"});
+            await response.write(`Something wrong... Can not get users`);
+            response.end();
+        }
     } else if (isUrlMatchWithPath && splitedUrl.length === 4) {
-        getUserById(request, response);
+        try {
+            getUserById(request, response);
+        } catch (error) {
+            response.writeHead(500, {"Content-Type": "text/plain"});
+            await response.write(`Something wrong... Can not get user by ID`);
+            response.end();
+        }
     }
 };
 

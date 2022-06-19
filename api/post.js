@@ -1,8 +1,13 @@
 import { createUser as createUserInStore } from '../domain/user.js';
 
 export const postApiController = async (request, response, payload) => {
-    console.log(request.url)
-    await createUser(request, response, JSON.parse(payload));
+    try {
+        await createUser(request, response, JSON.parse(payload));
+    } catch (error) {
+        response.writeHead(500, {"Content-Type": "text/plain"});
+        await response.write(`Something wrong... User can not be created`);
+        response.end();
+    }
 };
 
 export const createUser = async (request, response, user) => {
