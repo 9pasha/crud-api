@@ -1,31 +1,15 @@
 # crud-api
 
-Basic Scope
+Firstly you need to install dependencies:
 
-+10 The repository with the application contains a Readme.md file containing detailed instructions for installing, running and using the application
+npm install
 
-+10 GET api/user implemented properly
+For running app in development mode:
 
-+10 GET api/user/${userId} implemented properly
+npm start dev
 
-+10 POST api/user implemented properly (Valid object in JSON: {"username": "Test", "age": 22, "hobbies": ["test"]})
+For running app in production mode:
 
-+10 PUT api/user/{userId} implemented properly (Valid object in JSON: {"username": "Test", "age": 22, "hobbies": ["test"]})
+npm start prod
 
-+10 DELETE api/user/${userId} implemented properly
-
-+6 Users are stored in the form described in the technical requirements
-
-+6 Value of port on which application is running is stored in .env file
-
-Advanced Scope
-
-+10 Processing of requests to non-existing endpoints implemented properly
-
-+10 Errors on the server side that occur during the processing of a request should be handled and processed properly
-
-+5 Development mode: npm script start:dev implemented properly (application starting with "npm start dev")
-
-+5 Production mode: npm script start:prod implemented properly (application starting with "npm start prod")
-
-Total: 102
+Port for server in the .env file ("port" variable)
