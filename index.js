@@ -13,8 +13,12 @@ http.createServer((request, response) => {
     console.log('Server is available!');
     console.log('------------------------------');
 
-    requestsController(request, response);
+    let dataBuffer = [];
 
-    // response.write("<h2>Hello world</h2>");
-    // response.end();
+    request.on('data', chunk => {
+        dataBuffer.push(chunk);
+    }).on('end', () => {
+        dataBuffer = Buffer.concat(dataBuffer).toString();
+        requestsController(request, response, dataBuffer);
+    });
 }).listen(PORT);
