@@ -8,9 +8,9 @@ Basic Scope
 
 +10 GET api/user/${userId} implemented properly
 
-+10 POST api/user implemented properly
++10 POST api/user implemented properly (Valid object in JSON: {"username": "Test", "age": 22, "hobbies": ["test"]})
 
-+10 PUT api/user/{userId} implemented properly
++10 PUT api/user/{userId} implemented properly (Valid object in JSON: {"username": "Test", "age": 22, "hobbies": ["test"]})
 
 +10 DELETE api/user/${userId} implemented properly
 
@@ -20,12 +20,12 @@ Basic Scope
 
 Advanced Scope
 
-+30 Task implemented on Typescript
-
 +10 Processing of requests to non-existing endpoints implemented properly
 
 +10 Errors on the server side that occur during the processing of a request should be handled and processed properly
 
-+10 Development mode: npm script start:dev implemented properly
++5 Development mode: npm script start:dev implemented properly (application starting with "npm start dev")
 
-+10 Production mode: npm script start:prod implemented properly
++5 Production mode: npm script start:prod implemented properly (application starting with "npm start prod")
+
+Total: 102
