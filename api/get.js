@@ -8,6 +8,7 @@ import {
     validate as uuidValidate
 } from 'uuid';
 import { ApiBaseNamePath, ApiUserPath } from "./path.js";
+import {isValidEndpointUrl} from "../helpers/isValidEndpointUrl.js";
 
 const createTestUsers = () => {
     const user = {};
@@ -44,6 +45,15 @@ export const getApiController = async (request, response) => {
     const isUrlMatchWithPath = request.url
         .match(`${ApiBaseNamePath}${ApiUserPath}`);
     const splitedUrl = request.url.split('/');
+
+    if (!isValidEndpointUrl(request.url, ['api', 'users'])
+        || !isValidEndpointUrl(request.url, ['api', 'users', 'VAR'])) {
+        response.writeHead(404, {"Content-Type": "text/plain"});
+        await response.write(`Not available path`);
+        response.end();
+
+        return;
+    }
 
     if (isUrlMatchWithPath && splitedUrl.length === 3) {
         try {

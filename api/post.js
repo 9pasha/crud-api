@@ -1,6 +1,15 @@
 import { createUser as createUserInStore } from '../domain/user.js';
+import {isValidEndpointUrl} from "../helpers/isValidEndpointUrl.js";
 
 export const postApiController = async (request, response, payload) => {
+    if (!isValidEndpointUrl(request.url, ['api', 'users'])) {
+        response.writeHead(404, {"Content-Type": "text/plain"});
+        await response.write(`Not available path`);
+        response.end();
+
+        return;
+    }
+
     try {
         await createUser(request, response, JSON.parse(payload));
     } catch (error) {

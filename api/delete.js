@@ -1,7 +1,16 @@
 import { deleteUserById } from "../domain/user.js";
 import { validate as uuidValidate } from "uuid";
+import {isValidEndpointUrl} from "../helpers/isValidEndpointUrl.js";
 
 export const deleteApiController = async (request, response, payload) => {
+    if (!isValidEndpointUrl(request.url, ['api', 'users', 'VAR'])) {
+        response.writeHead(404, {"Content-Type": "text/plain"});
+        await response.write(`Not available path`);
+        response.end();
+
+        return;
+    }
+
     try {
         const userId = request.url.split('/')[3];
 
