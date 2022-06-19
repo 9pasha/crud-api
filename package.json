@@ -1,0 +1,26 @@
+{
+  "name": "crud-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "prod": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/9pasha/crud-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/9pasha/crud-api/issues"
+  },
+  "homepage": "https://github.com/9pasha/crud-api#readme",
+  "dependencies": {
+    "nodemon": "^2.0.16",
+    "uuid": "^8.3.2"
+  }
+}
