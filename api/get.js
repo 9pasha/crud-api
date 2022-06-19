@@ -66,7 +66,7 @@ export const getUserById = (request, response) => {
     const userId = request.url.split('/')[3];
     const userInJson = JSON.stringify(getUserByIdFromStore(userId));
 
-    if (uuidValidate(userId)) {
+    if (!uuidValidate(userId)) {
         response.writeHead(400, {"Content-Type": "text/plain"});
         response.write(`User ID is not valid (not uuid)`);
     } else if (!userInJson) {

@@ -1,6 +1,7 @@
 import { createUser as createUserInStore } from '../domain/user.js';
 
 export const postApiController = async (request, response, payload) => {
+    console.log(request.url)
     await createUser(request, response, JSON.parse(payload));
 };
 

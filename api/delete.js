@@ -8,9 +8,10 @@ export const deleteApiController = (request, response, payload) => {
 };
 
 export const deleteUser = (request, response, userId) => {
+    console.log(userId)
     const isDeleted = deleteUserById(userId);
 
-    if (uuidValidate(userId)) {
+    if (!uuidValidate(userId)) {
         response.writeHead(400, {"Content-Type": "text/plain"});
         response.write(`User ID is not valid (not uuid)`);
     } else if (!isDeleted) {
@@ -18,7 +19,6 @@ export const deleteUser = (request, response, userId) => {
         response.write(`User doesn't exist`);
     } else {
         response.writeHead(204, {"Content-Type": "text/plain"});
-        response.write('ok');
     }
 
     response.end();
