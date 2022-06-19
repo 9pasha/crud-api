@@ -7,7 +7,7 @@ import {
     v4 as uuidv4,
     validate as uuidValidate
 } from 'uuid';
-import {ApiBaseNamePath, ApiUserPath} from "./path.js";
+import { ApiBaseNamePath, ApiUserPath } from "./path.js";
 
 const createTestUsers = () => {
     const user = {};

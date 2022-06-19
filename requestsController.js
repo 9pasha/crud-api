@@ -1,6 +1,7 @@
 import { postApiController } from './api/post.js';
 import { getApiController } from './api/get.js';
-import {putApiController} from "./api/put.js";
+import { putApiController } from "./api/put.js";
+import { deleteApiController } from "./api/delete.js";
 
 export const RequestMethods = {
     post: 'POST',
@@ -9,12 +10,10 @@ export const RequestMethods = {
     delete: 'DELETE'
 };
 
-export const requestsController = (request, response, payload) => {
-    // console.log('Body =', request.body)
-
+export const requestsController = async (request, response, payload) => {
     switch (request.method) {
         case RequestMethods.post:
-            postApiController(request, response, payload);
+            await postApiController(request, response, payload);
             break;
         case RequestMethods.get:
             getApiController(request, response, payload);
@@ -23,7 +22,7 @@ export const requestsController = (request, response, payload) => {
             putApiController(request, response, payload);
             break;
         case RequestMethods.delete:
-
+            deleteApiController(request, response, payload);
             break;
         default:
             break;

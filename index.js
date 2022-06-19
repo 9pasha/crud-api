@@ -1,12 +1,8 @@
-// id — unique identifier (string, uuid) generated on server side
-// username — user's name (string, required)
-// age — user's age (number, required)
-// hobbies — user's hobbies (array of strings or empty array, required)
-
 import http from 'node:http';
 import { requestsController } from './requestsController.js';
+import 'dotenv/config';
 
-const PORT = 3000;
+const PORT = process.env.port || 3300;
 
 http.createServer((request, response) => {
     console.log('------------------------------');
@@ -17,8 +13,8 @@ http.createServer((request, response) => {
 
     request.on('data', chunk => {
         dataBuffer.push(chunk);
-    }).on('end', () => {
+    }).on('end',  async () => {
         dataBuffer = Buffer.concat(dataBuffer).toString();
-        requestsController(request, response, dataBuffer);
+        await requestsController(request, response, dataBuffer);
     });
 }).listen(PORT);
